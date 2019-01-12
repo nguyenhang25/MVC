@@ -1,6 +1,6 @@
 <?php
-include("model/model.php");
 
+include_once("model/CBGV.php");
 
 class MyController
 {
@@ -8,13 +8,13 @@ class MyController
 
 	public function __construct()  
     {  
-          $this->model = new model();
+          $this->model = new CBGV();
     }
 
 	public function showList ()
 	{
-		$list = $this->model->luong();
-		include 'view/viewList.php';
+		$list = $this->model->list();
+		//include 'view/viewList.php';
 
 	}
 

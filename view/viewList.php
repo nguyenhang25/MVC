@@ -56,7 +56,7 @@
 <body>
 	<h1>Danh sach can bo giang vien</h1>
 
-	<form action="controller/search.php" method="post">
+	<form action="search.php" method="post">
 		<input type="text" name="name">
 		<input type="submit" name="submit" value="Search">
 	</form>
@@ -75,18 +75,18 @@
 			<td>Luong Thuc</td>
 		</tr>
 		<?php
-		foreach ($list as $value) 
+		foreach ($array as $value) 
 		{
 		?>
 		<tr>
-			<td><?php echo $value->getID(); ?></td>
-			<td><a href="controller/CallUpdateFile.php?id=<?php echo $value->ID; ?>"><?php echo $value->getHoTen(); ?></a></td>
-			<td><?php echo $value->getNamSinh(); ?></td>
-			<td><?php echo $value->getQueQuan(); ?></td>
-			<td><?php echo $value->getLuongCung(); ?></td>
-			<td><?php echo $value->getThuong(); ?></td>
-			<td><?php echo $value->getPhat(); ?></td>
-			<td><?php echo $value->getLuongThuc(); ?></td>
+			<td><?php echo $value['ID']; ?></td>
+			<td><a href="CallUpdateFile.php?id=<?php echo $value['ID']; ?>"><?php echo $value['hoTen']; ?></a></td>
+			<td><?php echo $value['namSinh']; ?></td>
+			<td><?php echo $value['queQuan']; ?></td>
+			<td><?php echo $value['luongCung']; ?></td>
+			<td><?php echo $value['thuong']; ?></td>
+			<td><?php echo $value['phat']; ?></td>
+			<td><?php echo $value['luongThuc']; ?></td>
 		</tr>
 
 		<?php 

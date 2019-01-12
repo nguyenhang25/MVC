@@ -1,6 +1,6 @@
 <?php
-include("../model/model.php");
 
+include_once("model/CBGV.php");
 
 
 class Control
@@ -9,74 +9,36 @@ class Control
 
 	public function __construct ()  
     {  
-          $this->model = new model();
+          $this->model = new CBGV();
     }
 
 	
 	public function search ()
 	{
 		
-		if (isset($_POST['submit']))
-		{
-			if (!isset($_POST['name'])) {
-
-			}
-			else {
-				$hoTen = $_POST['name'];
-
-				$list = $this->model->displayInfor($hoTen);
-				include '../view/viewList.php';
-			}
-		}
+		$this->model->search();
 	}
 
 	public function add ()
 	{
 
-		if (isset($_POST['submit']))
-		{
-			
-			$hoTen = $_POST['hoTen'];
-			$namSinh = $_POST['namSinh'];
-			$queQuan = $_POST['queQuan'];
-			$luongCung = $_POST['luongCung'];
-			$thuong = $_POST['thuong'];
-			$phat = $_POST['phat'];
-
-
-			$this->model->add($hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat);
-			header('location:../');
-			
-		}
+		$this->model->add();
 	}
 
 	public function callUpdateFile ()
 	{
-		$id = $_GET['id'];
-		$list = $this->model->displayInforByID($id);
-		include '../view/Sua.php';
+		$this->model->displayInforByID();
 	}
 
 	public function update ()
 	{
 		if (isset($_POST['submit']))
 		{
-			$id = $_POST['id'];
-			$hoTen = $_POST['hoTen'];
-			$namSinh = $_POST['namSinh'];
-			$queQuan = $_POST['queQuan'];
-			$luongCung = $_POST['luongCung'];
-			$thuong = $_POST['thuong'];
-			$phat = $_POST['phat'];
-
-			$this->model->update($id, $hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat);
-			header('location:../');
+			$this->model->update();
 			
 		}
 		if (isset($_POST['submitDelete'])) {
-			$id = $_POST['id'];
-			$this->model->delete($id);
-			header('location:../');
+			$this->model->delete();
 		}
 	}
 
