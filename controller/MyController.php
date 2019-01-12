@@ -1,16 +1,23 @@
 <?php
-include_once("model/CBGV.php");
+include("model/model.php");
 
-use CBGV\CBGV;
 
 class MyController
 {
-	public $CBGV = new CBGV();
+	public $model;
+
+	public function __construct()  
+    {  
+          $this->model = new model();
+    }
+
 	public function showList ()
 	{
-		
+		$list = $this->model->luong();
+		include 'view/viewList.php';
 
 	}
+
 }
 
 

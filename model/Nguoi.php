@@ -3,10 +3,17 @@ namespace Nguoi;
 
 class Nguoi 
 {
+	public $ID;
 	public $hoTen;
 	public $namSinh;
 	public $queQuan;
 
+
+	public function setID ($ID)
+	{
+		$this->ID = $ID;
+	}
+	
 	public function setHoTen ($hoTen)
 	{
 		$this->hoTen = $hoTen;
