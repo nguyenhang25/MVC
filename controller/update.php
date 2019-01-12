@@ -3,7 +3,6 @@ include_once("Control.php");
 
 $controller = new Control();
 
-$controller->search();
-
+$controller->update();
 
 ?>

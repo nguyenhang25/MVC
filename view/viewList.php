@@ -7,6 +7,16 @@
 			width: 80%;
 			margin: 0 auto;
 		}
+		.add {
+			text-decoration: none;
+		    display: inline-block;
+		    padding: 5px 10px;
+		    border: 1px solid #ccc;
+		}
+		.add:hover{
+			background-color: #000;
+			color: #fff;
+		}
 
 		h1 {
 			font-weight: bold;
@@ -29,15 +39,29 @@
 			border-bottom: 1px solid #ccc;
 
 		}
+		.table td : lastchild{
+			border-right: none;
+		}
+		.table td a{
+			text-decoration: none;
+			color: #000;
+		}
+		.table td a:hover{
+			text-decoration: underline;
+			color: #2f86c3;
+		}
+
 	</style>
 </head>
 <body>
-	<h1>Danh sach can bo giao vien</h1>
+	<h1>Danh sach can bo giang vien</h1>
 
 	<form action="controller/search.php" method="post">
 		<input type="text" name="name">
 		<input type="submit" name="submit" value="Search">
 	</form>
+
+	<a class = "add" href="view/AddForm.php">Them giang vien</a>
 		
 	<table class="table">
 		<tr>
@@ -55,7 +79,7 @@
 		?>
 		<tr>
 			<td><?php echo $value->ID; ?></td>
-			<td><?php echo $value->hoTen; ?></td>
+			<td><a href="controller/CallUpdateFile.php?id=<?php echo $value->ID; ?>"><?php echo $value->hoTen; ?></a></td>
 			<td><?php echo $value->namSinh; ?></td>
 			<td><?php echo $value->queQuan; ?></td>
 			<td><?php echo $value->luongCung; ?></td>
