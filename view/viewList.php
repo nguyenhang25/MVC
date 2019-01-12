@@ -75,17 +75,18 @@
 			<td>Luong Thuc</td>
 		</tr>
 		<?php
-		foreach ($list as $value) {
+		foreach ($list as $value) 
+		{
 		?>
 		<tr>
-			<td><?php echo $value->ID; ?></td>
-			<td><a href="controller/CallUpdateFile.php?id=<?php echo $value->ID; ?>"><?php echo $value->hoTen; ?></a></td>
-			<td><?php echo $value->namSinh; ?></td>
-			<td><?php echo $value->queQuan; ?></td>
-			<td><?php echo $value->luongCung; ?></td>
-			<td><?php echo $value->thuong; ?></td>
-			<td><?php echo $value->phat; ?></td>
-			<td><?php echo $value->luongThuc; ?></td>
+			<td><?php echo $value->getID(); ?></td>
+			<td><a href="controller/CallUpdateFile.php?id=<?php echo $value->ID; ?>"><?php echo $value->getHoTen(); ?></a></td>
+			<td><?php echo $value->getNamSinh(); ?></td>
+			<td><?php echo $value->getQueQuan(); ?></td>
+			<td><?php echo $value->getLuongCung(); ?></td>
+			<td><?php echo $value->getThuong(); ?></td>
+			<td><?php echo $value->getPhat(); ?></td>
+			<td><?php echo $value->getLuongThuc(); ?></td>
 		</tr>
 
 		<?php 

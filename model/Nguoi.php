@@ -13,6 +13,10 @@ class Nguoi
 	{
 		$this->ID = $ID;
 	}
+	public function getID ()
+	{
+		return $this->ID;
+	}
 	
 	public function setHoTen ($hoTen)
 	{

@@ -34,13 +34,18 @@ class CBGV extends Nguoi
 	{
 		$this->phat = $phat;
 	}
-	public function getPhat ($phat)
+	public function getPhat ()
 	{
-		$this->phat = $phat;
+		return $this->phat;
 	}
+
 	public function setLuongThuc ($luongThuc)
 	{
 		$this->luongThuc = $luongThuc;
+	}
+	public function getLuongThuc ()
+	{
+		return $this->luongThuc;
 	}
 
 	public function tinhLuong ()

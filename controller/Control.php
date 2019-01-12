@@ -7,7 +7,7 @@ class Control
 {
 	public $model;
 
-	public function __construct()  
+	public function __construct ()  
     {  
           $this->model = new model();
     }
@@ -50,11 +50,13 @@ class Control
 		}
 	}
 
-	public function callUpdateFile(){
+	public function callUpdateFile ()
+	{
 		$id = $_GET['id'];
 		$list = $this->model->displayInforByID($id);
 		include '../view/Sua.php';
 	}
+
 	public function update ()
 	{
 		if (isset($_POST['submit']))
