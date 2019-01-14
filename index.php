@@ -1,8 +1,14 @@
 <?php
-include_once("controller/MyController.php");
+include_once("controller/Control.php");
 
-$controller = new MyController();
+if (isset($_GET['action'])) {
+	$actionURL = $_GET['action'];
+} else {
+	$actionURL = 'index';
+}
 
-$controller->showList();
+$control = new Control();
+$action = strtolower($actionURL);
+$control->$action();
 
 ?>

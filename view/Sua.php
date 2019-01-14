@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 <body>
-	<form method="post" action="update.php">
+	<form method="post" action="index.php?action=update">
 
 		<p>ID</p>
 		<input type="text" name="id" value = "<?php echo $array[0]['ID']; ?>" readonly>

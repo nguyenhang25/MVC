@@ -12,7 +12,13 @@ class Control
           $this->model = new CBGV();
     }
 
-	
+	public function index ()
+	{
+		$array = $this->model->list();
+		include 'view/viewList.php';
+
+	}
+
 	public function search ()
 	{
 		if (isset($_POST['submit']))

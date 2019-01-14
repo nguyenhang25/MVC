@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 <body>
-	<form method="post" action="../add.php">
+	<form method="post" action="../index.php?action=add">
 		<p>Ho ten</p>
 		<input type="text" name="hoTen">
 		<p>Nam sinh</p>
