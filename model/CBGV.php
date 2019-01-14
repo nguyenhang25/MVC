@@ -55,61 +55,28 @@ class CBGV extends Nguoi implements CBGVAction
 	}
 
 
-	public function add ()
+	public function add ($hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat)
     {
-    	if (isset($_POST['submit']))
-		{
-			
-			$hoTen = $_POST['hoTen'];
-			$namSinh = $_POST['namSinh'];
-			$queQuan = $_POST['queQuan'];
-			$luongCung = $_POST['luongCung'];
-			$thuong = $_POST['thuong'];
-			$phat = $_POST['phat'];
-
-			$con = new Connect();
-			$con->conn();
-			$sql = "INSERT INTO CBGV(ID, hoTen, namSinh, queQuan, luongCung, thuong, phat, luongThuc) 
-                VALUES (NULL, '$hoTen', $namSinh, '$queQuan', $luongCung, $thuong, $phat, NULL)";
-            $con->query($sql);
-			header('location: ../MVC');
-			
-		}
+		$con = new Connect();
+		$con->conn();
+		$sql = "INSERT INTO CBGV(ID, hoTen, namSinh, queQuan, luongCung, thuong, phat, luongThuc) 
+            VALUES (NULL, '$hoTen', $namSinh, '$queQuan', $luongCung, $thuong, $phat, NULL)";
+        $con->query($sql);
     }
-    public function update ()
+    public function update ($id, $hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat)
 	{
-		if (isset($_POST['submit']))
-		{
-			$id = $_POST['id'];
-			$hoTen = $_POST['hoTen'];
-			$namSinh = $_POST['namSinh'];
-			$queQuan = $_POST['queQuan'];
-			$luongCung = $_POST['luongCung'];
-			$thuong = $_POST['thuong'];
-			$phat = $_POST['phat'];
-
-			$con = new Connect();
-			$con->conn();
-			$sql = "UPDATE CBGV SET hoTen = '$hoTen', namSinh = $namSinh, queQuan='$queQuan', luongCung = $luongCung, thuong = $thuong, phat = $phat WHERE ID = $id";
-			$con->query($sql);
-
-			header('location: ../MVC');
-			
-		}
+		$con = new Connect();
+		$con->conn();
+		$sql = "UPDATE CBGV SET hoTen = '$hoTen', namSinh = $namSinh, queQuan='$queQuan', luongCung = $luongCung, thuong = $thuong, phat = $phat WHERE ID = $id";
+		$con->query($sql);		
 	}
 
-	public function delete ()
-	{
-		if (isset($_POST['submitDelete'])) {
-			$id = $_POST['id'];
-
-			$con = new Connect();
-			$con->conn();
-			$sql = "DELETE FROM CBGV WHERE ID = $id";
-			$con->query($sql);
-
-			header('location: ../MVC');
-		}
+	public function delete ($id)
+	{		
+		$con = new Connect();
+		$con->conn();
+		$sql = "DELETE FROM CBGV WHERE ID = $id";
+		$con->query($sql);
 	}
 
 	public function list ()
@@ -137,45 +104,32 @@ class CBGV extends Nguoi implements CBGVAction
 			$query = "UPDATE CBGV SET luongThuc=".$luongThuc." WHERE id=".$value['ID'];
 			$con->query($query);
 		}
-
-		include 'view/viewList.php';
+		return $array;		
 	}
 
 
-	public function search ()
+	public function search ($hoTen)
 	{
-		if (isset($_POST['submit']))
-		{
-			if (!isset($_POST['name'])) {
+		$con = new Connect();
+		$con->conn();
+		$sql = "SELECT * FROM CBGV  WHERE hoTen LIKE '%$hoTen%'" ;
+		$con->query($sql);
+		$array = array();
+		$array = $con->getArray();
 
-			}
-			else {
-				$hoTen = $_POST['name'];
-
-				$con = new Connect();
-				$con->conn();
-				$sql = "SELECT * FROM CBGV  WHERE hoTen LIKE '%$hoTen%'" ;
-				$con->query($sql);
-				$array = array();
-				$array = $con->getArray();
-
-				
-				include 'view/viewList.php';
-			}
-		}
+		return $array;		
 	}
 
-	public function displayInforByID ()
-	{
-		$id = $_GET['id'];		
+	public function displayInforByID ($id)
+	{	
 		$con = new Connect();
 		$con->conn();
 		$sql = "SELECT * FROM CBGV  WHERE ID = $id ";
 		$con->query($sql);
     	$array = array();
 		$array = $con->getArray();
-
-		include 'view/Sua.php';
+		return $array;
+		
 	}
 	
 }

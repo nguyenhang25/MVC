@@ -13,8 +13,8 @@ class MyController
 
 	public function showList ()
 	{
-		$list = $this->model->list();
-		//include 'view/viewList.php';
+		$array = $this->model->list();
+		include 'view/viewList.php';
 
 	}
 

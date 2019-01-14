@@ -15,30 +15,64 @@ class Control
 	
 	public function search ()
 	{
-		
-		$this->model->search();
+		if (isset($_POST['submit']))
+		{
+			if (!isset($_POST['name'])) {
+
+			}
+			else {
+				$hoTen = $_POST['name'];
+				$array = array();
+				$array = $this->model->search($hoTen);
+				include 'view/viewList.php';
+			}
+		}		
 	}
 
 	public function add ()
 	{
+		if (isset($_POST['submit']))
+		{
+			
+			$hoTen = $_POST['hoTen'];
+			$namSinh = $_POST['namSinh'];
+			$queQuan = $_POST['queQuan'];
+			$luongCung = $_POST['luongCung'];
+			$thuong = $_POST['thuong'];
+			$phat = $_POST['phat'];
 
-		$this->model->add();
+			$this->model->add($hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat);
+			header('location: ../MVC');
+		}
 	}
 
 	public function callUpdateFile ()
 	{
-		$this->model->displayInforByID();
+		$id = $_GET['id'];	
+		$array = array();
+		$array = $this->model->displayInforByID($id);
+		include 'view/Sua.php';
 	}
 
 	public function update ()
 	{
 		if (isset($_POST['submit']))
 		{
-			$this->model->update();
-			
+			$id = $_POST['id'];
+			$hoTen = $_POST['hoTen'];
+			$namSinh = $_POST['namSinh'];
+			$queQuan = $_POST['queQuan'];
+			$luongCung = $_POST['luongCung'];
+			$thuong = $_POST['thuong'];
+			$phat = $_POST['phat'];
+
+			$this->model->update($id, $hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat);
+			header('location: ../MVC');
 		}
 		if (isset($_POST['submitDelete'])) {
-			$this->model->delete();
+			$id = $_POST['id'];
+			$this->model->delete($id);
+			header('location: ../MVC');
 		}
 	}
 
